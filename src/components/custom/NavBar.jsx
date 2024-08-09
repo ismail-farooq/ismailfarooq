@@ -90,10 +90,10 @@ function NavBar() {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-              <a href="#">
+              <a href="https://www.linkedin.com/in/ismail-omer-farooq/" target="_blank">
                 <img src={linkedin} alt="" />
               </a>
-              <a href="#">
+              <a href="https://github.com/ismail-farooq" target="_blank">
                 <img src={github} alt="" />
               </a>
             </div>
