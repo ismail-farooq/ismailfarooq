@@ -3,6 +3,9 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import logo from '../../../public/logo.png';
+import linkedin from '../../../public/linkedin.png';
+import github from '../../../public/github-mark-white.png';
 
 function NavBar() {
   const [activeLink, setActiveLink] = useState("home");
@@ -33,7 +36,7 @@ function NavBar() {
     <Navbar id="navbar" expand="lg" className={scrolled ? "scrolled" : ""}>
       <Container>
         <Navbar.Brand href="#home">
-          <img className="logo1" src="../../../public/logo.png" alt="LOGO"></img>
+          <img className="logo1" src={logo} alt="LOGO"></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
@@ -88,10 +91,10 @@ function NavBar() {
           <span className="navbar-text">
             <div className="social-icon">
               <a href="#">
-                <img src="public\linkedin.png" alt="" />
+                <img src={linkedin} alt="" />
               </a>
               <a href="#">
-                <img src="public\github-mark-white.png" alt="" />
+                <img src={github} alt="" />
               </a>
             </div>
             <button className="vvd">
