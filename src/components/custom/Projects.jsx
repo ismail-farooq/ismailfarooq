@@ -33,7 +33,7 @@ function Projects() {
           <Col>
             <TrackVisibility>
             {({isVisible})=>  
-              <div className={isVisible ? 'animate__animated animate__bounce' : ''}>
+              <div className={isVisible ? 'animate__animated animate__pulse' : ''}>
                 <h2>Projects</h2>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
