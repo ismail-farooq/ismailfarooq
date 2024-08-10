@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { ArrowRightCircle } from "react-bootstrap-icons";
+import { ArrowRightCircle } from "react-bootstrap-icons"; 
+import 'animate.css'
+import TrackVisibility from "react-on-screen";
 
 function Banner() {
   const [loopNum, setLoopNum] = useState(0);
@@ -48,18 +50,29 @@ function Banner() {
       <Container>
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
-            <span className="tagline">Welcome to my Portfolio</span>
-            <h1>
-              {`Hi I'm Ismail - `}
-              <br />
-              <span className="typer">{text}</span>
-            </h1>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Consequatur natus dolores quia, ratione ipsa, sint quos quas
-              dolore beatae assumenda nisi temporibus atque voluptatibus
-              ducimus. Tempora suscipit a aperiam impedit?
-            </p>
+            <TrackVisibility>
+              {({ isVisible }) => (
+                <div
+                  className={
+                    isVisible ? "animate__animated animate__fadeIn" : ""
+                  }
+                >
+                  <span className="tagline">Welcome to my Portfolio</span>
+                  <h1>
+                    {`Hi I'm Ismail - `}
+                    <br />
+                    <span className="typer">{text}</span>
+                  </h1>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Consequatur natus dolores quia, ratione ipsa, sint quos quas
+                    dolore beatae assumenda nisi temporibus atque voluptatibus
+                    ducimus. Tempora suscipit a aperiam impedit?
+                  </p>
+                </div>
+              )}
+            </TrackVisibility>
+
             <button>
               Let's connect <ArrowRightCircle size={25}></ArrowRightCircle>
             </button>

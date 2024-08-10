@@ -1,6 +1,8 @@
 import React from "react";
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
+import "animate.css";
+import TrackVisibility from "react-on-screen";
 
 function Projects() {
   const projects = [
@@ -8,19 +10,19 @@ function Projects() {
       title: "Face Detection",
       description: "Computer Vision and Deep Learning detection model",
       img: "",
-      url:'https://ismailfarooq.pythonanywhere.com/camera_feed'
+      url: "https://ismailfarooq.pythonanywhere.com/camera_feed",
     },
     {
       title: "Artificial Intelligence Resume Builder",
       description: "Neural network-powered LLM generation",
       img: "",
-      url:'https://ai-resume-builder-react.vercel.app/'
+      url: "https://ai-resume-builder-react.vercel.app/",
     },
     {
       title: "Mario",
       description: "3-Dimensional Game Engine",
       img: "",
-      url:''
+      url: "",
     },
   ];
 
@@ -29,13 +31,18 @@ function Projects() {
       <Container>
         <Row>
           <Col>
-            <h2>Projects</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-              facilis eveniet consequuntur ipsam. Nobis hic, qui, doloribus
-              nulla commodi, animi obcaecati dolorum ipsam sed harum maiores
-              numquam quasi! Molestias, earum?
-            </p>
+            <TrackVisibility>
+            {({isVisible})=>  
+              <div className={isVisible ? 'animate__animated animate__bounce' : ''}>
+                <h2>Projects</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Facere facilis eveniet consequuntur ipsam. Nobis hic, qui,
+                  doloribus nulla commodi, animi obcaecati dolorum ipsam sed
+                  harum maiores numquam quasi! Molestias, earum?
+                </p>
+              </div>}
+            </TrackVisibility>
             <Tab.Container id="projects-tabs" defaultActiveKey="first">
               <Nav variant="pills">
                 <Nav.Item>
