@@ -7,6 +7,7 @@ import Banner from './components/custom/Banner'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Skills from './components/custom/Skills'
 import Projects from './components/custom/Projects'
+import Footer from './components/custom/Footer'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Banner></Banner>
       <Skills></Skills>
       <Projects></Projects>
+      <Footer></Footer>
     </div>
   )
 }

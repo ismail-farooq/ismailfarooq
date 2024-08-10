@@ -48,7 +48,7 @@ function NavBar() {
               className={
                 activeLink === "skills" ? "active navbar-link" : "navbar-link"
               }
-              onClick={() => {
+              onClick={(e) => {
                 onUpdateActiveLink("skills");
               }}
             >
