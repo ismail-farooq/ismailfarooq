@@ -66,26 +66,15 @@ function NavBar() {
               Projects
             </Nav.Link>
             <Nav.Link
-              href="#education"
+              href="#qualification"
               className={
-                activeLink === "education" ? "active navbar-link" : "navbar-link"
+                activeLink === "qualification" ? "active navbar-link" : "navbar-link"
               }
               onClick={() => {
-                onUpdateActiveLink("education");
+                onUpdateActiveLink("qualification");
               }}
             >
-              Education
-            </Nav.Link>
-            <Nav.Link
-              href="#experience"
-              className={
-                activeLink === "experience" ? "active navbar-link" : "navbar-link"
-              }
-              onClick={() => {
-                onUpdateActiveLink("experience");
-              }}
-            >
-              Experience
+              Qualification
             </Nav.Link>
           </Nav>
           <span className="navbar-text">
