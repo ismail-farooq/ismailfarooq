@@ -22,7 +22,7 @@ function Projects() {
       title: "Mario",
       description: "3-Dimensional Game Engine",
       img: "",
-      url: "",
+      url: "https://ismailfarooq-mario.vercel.app/",
     },
   ];
 
