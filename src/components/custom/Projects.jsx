@@ -3,26 +3,44 @@ import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import face from "../../../public/face.jpg";
+import resume from "../../../public/resume.jpg";
+import mario from "../../../public/mario.jpg";
+import snaplens from "../../../public/snaplens.jpg";
+import stock from "../../../public/stock.jfif";
+
 
 function Projects() {
   const projects = [
     {
       title: "Face Detection",
       description: "Computer Vision and Deep Learning detection model",
-      img: "",
+      img: face,
       url: "https://ismailfarooq.pythonanywhere.com/camera_feed",
     },
     {
       title: "Artificial Intelligence Resume Builder",
       description: "Neural network-powered LLM generation",
-      img: "",
+      img: resume,
       url: "https://ai-resume-builder-react.vercel.app/",
     },
     {
       title: "Mario",
-      description: "3-Dimensional Game Engine",
-      img: "",
+      description: "2-Dimensional Game Engine",
+      img: mario,
       url: "https://ismailfarooq-mario.vercel.app/",
+    },
+    {
+      title: "Augmenred Reality",
+      description: "3-Dimensional ML rendering",
+      img: snaplens,
+      url: "https://www.google.com/url?q=https://lens.snap.com/experience/0f7532f4-b5a6-44d5-a40a-b3f8a8e570c7&sa=D&source=docs&ust=1731528756733266&usg=AOvVaw0hI5qgARF5GInriv5y6GHH",
+    },
+    {
+      title: "Algorithmic Trading Bot",
+      description: "Real time stock transactions",
+      img: stock,
+      url: "https://ismailfarooq.pythonanywhere.com/login",
     },
   ];
 

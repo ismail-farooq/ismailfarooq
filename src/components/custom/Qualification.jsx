@@ -4,6 +4,8 @@ import color from "../../../public/color-sharp.png";
 import occ from "../../../public/occ.png";
 import ru from "../../../public/ru.png";
 import dAI from "../../../public/displayai.png";
+import snap from "../../../public/snap.png";
+
 
 
 function Qualification() {
@@ -32,7 +34,7 @@ function Qualification() {
                     }
                   >
                     <i className="uil--graduation-cap qualification_icon"></i>{" "}
-                    Education
+                    Experience 
                   </div>
                   <div
                     onClick={() => toggleTab(2)}
@@ -43,7 +45,7 @@ function Qualification() {
                     }
                   >
                     <i className="ph--briefcase qualification_icon"></i>{" "}
-                    Experience
+                    Education
                   </div>
                 </div>
 
@@ -51,7 +53,7 @@ function Qualification() {
                   {/* Education Section */}
                   <div
                     className={
-                      toggle === 1
+                      toggle === 2
                         ? "qualification_content qualification_content_active"
                         : "qualification_content"
                     }
@@ -91,7 +93,7 @@ function Qualification() {
                           New Brunswick, NJ{" "}
                         </span>
                         <div className="qualification_calender">
-                          <i className="uit--calender"></i> 2024 - Present
+                          <i className="uit--calender"></i> 2025 - 2027
                         </div>
                       </div>
                     </div>
@@ -100,7 +102,7 @@ function Qualification() {
                   {/* Experience Section */}
                   <div
                     className={
-                      toggle === 2
+                      toggle === 1
                         ? "qualification_content qualification_content_active"
                         : "qualification_content"
                     }
@@ -122,6 +124,26 @@ function Qualification() {
                         <span className="qualification_line"></span>
                       </div>
                     </div>
+                    <div className="qualification_data">
+                      <div></div>
+                      <div>
+                        <span className="qualification_rounder"></span>
+                        <span className="qualification_line"></span>
+                      </div>
+                      <div>
+                        <img src={snap} alt="" style={{width:'500px'}} />
+                        <h3 className="qualification_title">
+                          Snap Inc.
+                        </h3>
+                        <span className="qualification_subtitle">
+                          Santa Monica, CA{" "}
+                        </span>
+                        <div className="qualification_calender">
+                          <i className="uit--calender"></i> 2024 - 2024
+                        </div>
+                      </div>
+                    </div>
+                    
                   </div>
                 </div>
               </div>

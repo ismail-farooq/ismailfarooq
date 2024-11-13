@@ -711,7 +711,12 @@ footer p{
   }
 }
 
-
+.book {
+  padding: 120px 0;
+  position: relative;
+  background-color: black;
+  z-index: 0;
+}
 
 
 

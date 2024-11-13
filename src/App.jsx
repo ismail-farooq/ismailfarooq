@@ -9,6 +9,7 @@ import Skills from './components/custom/Skills'
 import Projects from './components/custom/Projects'
 import Footer from './components/custom/Footer'
 import Qualification from './components/custom/Qualification'
+import BookRenderer from './components/custom/BookSlider/BookRenderer'
 
 
 function App() {

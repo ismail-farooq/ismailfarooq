@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import typescript from "../../../public/typescript.png";
 
 function Skills() {
   const responsive = {
@@ -377,6 +378,20 @@ function Skills() {
                     </svg>
                   </div>
                   <h5>JavaScript</h5>
+                </div>
+
+                <div className="skill-item">
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <img src={typescript} alt="" srcset="" />
+                  </div>
+                  <h5>TypeScript</h5>
                 </div>
 
                 <div className="skill-item">
