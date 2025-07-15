@@ -113,7 +113,7 @@ function NavBar() {
         <Modal.Body>
           <p>Feel free to reach out via email or connect on LinkedIn!</p>
           <p>
-            📧 <a href="mailto:iof7@rutgers.scarletmail.com">iof7@rutgers.scarletmail.com</a>
+            📧 <a href="mailto:iof7@rutgers.scarletmail.edu">iof7@rutgers.scarletmail.edu</a>
           </p>
           <p>
             🔗{" "}
