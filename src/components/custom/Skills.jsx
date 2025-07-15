@@ -31,12 +31,9 @@ function Skills() {
         <Row>
           <Col>
             <div className="skill-box">
-              <h2>Skills</h2>
+              <h2>Tech Stack</h2>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos
-                quis et odit! Laboriosam pariatur repudiandae labore, hic, illum
-                distinctio, cum voluptatum culpa at totam commodi amet! Rem
-                quasi ex vitae?
+                My ever-growing toolbox: frameworks, languages, and libraries I’ve learned (and keep learning) as I build cool stuff
               </p>
               <Carousel
                 responsive={responsive}

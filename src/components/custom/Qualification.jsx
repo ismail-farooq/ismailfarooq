@@ -5,6 +5,7 @@ import occ from "../../../public/occ.png";
 import ru from "../../../public/ru.png";
 import dAI from "../../../public/displayai.png";
 import snap from "../../../public/snap.png";
+import epic from "../../../public/epic.png";
 
 
 
@@ -34,7 +35,7 @@ function Qualification() {
                     }
                   >
                     <i className="uil--graduation-cap qualification_icon"></i>{" "}
-                    Experience 
+                    Experience
                   </div>
                   <div
                     onClick={() => toggleTab(2)}
@@ -60,7 +61,7 @@ function Qualification() {
                   >
                     <div className="qualification_data">
                       <div>
-                        <img src={occ} alt="" />
+                        <img src={occ} style={{ width: "200px", display: "block", margin: "0 auto", marginBottom:'10px'  }} alt="" />
                         <h3 className="qualification_title">
                           Ocean County College
                         </h3>
@@ -68,7 +69,7 @@ function Qualification() {
                           Toms River, NJ{" "}
                         </span>
                         <div className="qualification_calender">
-                          <i className="uit--calender"></i> 2024 - Present
+                          <i className="uit--calender"></i> 2024 - 2025
                         </div>
                       </div>
 
@@ -85,7 +86,7 @@ function Qualification() {
                         <span className="qualification_line"></span>
                       </div>
                       <div>
-                        <img src={ru} alt="" style={{width:'100px'}} />
+                        <img src={ru} alt="" style={{ width: "200px", display: "block", margin: "0 auto", marginBottom:'10px'  }} />
                         <h3 className="qualification_title">
                           Rutgers University
                         </h3>
@@ -107,13 +108,12 @@ function Qualification() {
                         : "qualification_content"
                     }
                   >
+                    {/* 1. Display AI — LEFT side */}
                     <div className="qualification_data">
                       <div>
-                        <img src={dAI} alt="" />
+                        <img src={dAI} alt=""  style={{ width: "200px", display: "block", margin: "0 auto", marginBottom:'10px'  }}/>
                         <h3 className="qualification_title">Display AI</h3>
-                        <span className="qualification_subtitle">
-                          Edison, NJ{" "}
-                        </span>
+                        <span className="qualification_subtitle">Edison, NJ</span>
                         <div className="qualification_calender">
                           <i className="uit--calender"></i> 2024 - Present
                         </div>
@@ -123,27 +123,49 @@ function Qualification() {
                         <span className="qualification_rounder"></span>
                         <span className="qualification_line"></span>
                       </div>
+
+                      <div></div> 
                     </div>
+
+                   
                     <div className="qualification_data">
-                      <div></div>
+                      <div></div> 
+
                       <div>
                         <span className="qualification_rounder"></span>
                         <span className="qualification_line"></span>
                       </div>
+
                       <div>
-                        <img src={snap} alt="" style={{width:'500px'}} />
-                        <h3 className="qualification_title">
-                          Snap Inc.
-                        </h3>
-                        <span className="qualification_subtitle">
-                          Santa Monica, CA{" "}
-                        </span>
+                        <img src={snap} alt="" style={{ width: "200px", display: "block", margin: "0 auto", marginBottom:'10px'  }} />
+                        <h3 className="qualification_title">Snap Inc.</h3>
+                        <span className="qualification_subtitle">Santa Monica, CA</span>
                         <div className="qualification_calender">
                           <i className="uit--calender"></i> 2024 - 2024
                         </div>
                       </div>
                     </div>
-                    
+
+                    {/* 3. Epic Games — LEFT side */}
+                    <div className="qualification_data">
+                      <div>
+                        <img src={epic} alt="" style={{ width: "100px" , display: "block", margin: "0 auto", marginBottom:'10px'}} />
+                        <h3 className="qualification_title">Epic Games</h3>
+                        <span className="qualification_subtitle">Cary, NC</span>
+                        <div className="qualification_calender">
+                          <i className="uit--calender"></i> 2025 - 2025
+                        </div>
+                      </div>
+
+                      <div>
+                        <span className="qualification_rounder"></span>
+                        <span className="qualification_line"></span>
+                      </div>
+
+                      <div></div> {/* Right side empty */}
+                    </div>
+
+
                   </div>
                 </div>
               </div>

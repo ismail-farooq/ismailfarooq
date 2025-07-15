@@ -54,10 +54,7 @@ function Projects() {
               <div className={isVisible ? 'animate__animated animate__pulse' : ''}>
                 <h2>Projects</h2>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Facere facilis eveniet consequuntur ipsam. Nobis hic, qui,
-                  doloribus nulla commodi, animi obcaecati dolorum ipsam sed
-                  harum maiores numquam quasi! Molestias, earum?
+                  Some of the stuff I've built along the way - a mix of fun, function, and learning by doing
                 </p>
               </div>}
             </TrackVisibility>

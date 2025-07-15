@@ -24,7 +24,7 @@ function Footer() {
                 <img src={github} alt="" />
               </a>
             </div>
-            <p>Copytight 2024. All Right Reserved</p>
+            <p>Copyright 2025. All Right Reserved</p>
           </Col>
         </Row>
       </Container>

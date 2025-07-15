@@ -201,6 +201,91 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 
 
+/* Modal Overlay */
+.modal-backdrop.show {
+  background-color: #3b2c49; /* semi-transparent blue */
+  backdrop-filter: blur(4px);
+}
+
+/* Modal Container */
+.modal-content {
+  background-color: #1a1a1a; /* dark but lighter than body */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(26, 29, 184, 0.3);
+}
+
+/* Modal Header */
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  letter-spacing: 0.8px;
+}
+
+/* Close Button */
+.btn-close {
+  filter: invert(1);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.btn-close:hover {
+  opacity: 1;
+}
+
+/* Modal Body */
+.modal-body p {
+  color: #ccc;
+  letter-spacing: 0.8px;
+  margin-bottom: 1rem;
+}
+
+.modal-body a {
+  color: #4a2fbd; /* purple-blue accent */
+  font-weight: 600;
+  text-decoration: none;
+  padding-left: 15px;
+  transition: color 0.3s ease;
+}
+.modal-body a:hover {
+  color: #aa367c; /* pink-purple accent */
+  text-decoration: underline;
+}
+
+/* Modal Footer */
+.modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1rem;
+  justify-content: flex-end;
+}
+
+.modal-footer .btn-secondary {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 12px;
+}
+.modal-footer .btn-secondary:hover {
+  background-color: #4a2fbd;
+  border-color: #4a2fbd;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+
 
 .banner {
   margin-top: 0;
@@ -547,7 +632,7 @@ footer p{
 
 .qualification_content_active {
   opacity: 1;
-  max-height: 500px; /* Adjust based on your content */
+  max-height: 1000px; /* Adjust based on your content */
 }
 
 .qualification_data {
