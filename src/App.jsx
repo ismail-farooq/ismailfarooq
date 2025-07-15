@@ -10,6 +10,8 @@ import Projects from './components/custom/Projects'
 import Footer from './components/custom/Footer'
 import Qualification from './components/custom/Qualification'
 import BookRenderer from './components/custom/BookSlider/BookRenderer'
+import { Analytics } from '@vercel/analytics/next';
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
 
   return (
     <div>
+      <Analytics></Analytics>
       <NavBar></NavBar>
       <Banner></Banner>
       <Skills></Skills>
