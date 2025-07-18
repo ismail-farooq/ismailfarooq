@@ -7,8 +7,7 @@ import { UI } from "./UI";
 
 function BookRenderer() {
   return (
-    <div className="book"> 
-      <UI />
+    <div className="book">
       <Loader />
       <Canvas shadows camera={{ position: [-0.5, 1, 4], fov: 45 }}>
         <group position-y={0}>
@@ -17,6 +16,8 @@ function BookRenderer() {
           </Suspense>
         </group>
       </Canvas>
+      <UI />
+
     </div>
   );
 }
