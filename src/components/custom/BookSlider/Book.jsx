@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { pages } from './UI'
-import Page from './Page'
 
-function Book({ ...props }) {
+const Page = ({ number, front, back, ...props }) => {
+    const group = useRef();
+
+    return (
+        <group {...props} ref={group}>
+            <mesh scale={1}>
+                <boxGeometry />
+                <meshBasicMaterial color="blue" />
+            </mesh>
+        </group>
+    );
+};
+
+
+const Book = ({ ...props }) => {
   return (
     <group {...props}>
       {
@@ -11,7 +24,8 @@ function Book({ ...props }) {
         ))
       }
     </group>
-  )
-}
+  );
+};
 
-export default Book
+export default Book;
+
