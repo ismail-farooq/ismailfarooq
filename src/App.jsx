@@ -21,9 +21,9 @@ function App() {
     <div>
       <Analytics mode="production" />
       <NavBar></NavBar>
-      <BookRenderer></BookRenderer>
       <Banner></Banner>
       <Skills></Skills>
+    <BookRenderer></BookRenderer>
       <Projects></Projects>
       <Qualification></Qualification>
       <Footer></Footer>
