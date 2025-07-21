@@ -19,7 +19,6 @@ import { easing } from "maath";
 import { useTexture } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
 
-const lerpFactor = 0.05;
 const easingFactor = 0.5; // Controls the speed of the easing
 const easingFactorFold = 0.3; // Controls the speed of the easing
 const insideCurveStrength = 0.18; // Controls the strength of the curve
@@ -170,24 +169,38 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
         return mesh;
     }, []);
 
-    useFrame(() => {
+    useFrame((_, delta) => {
         if (!skinnedMeshRef.current) return;
 
         const bones = skinnedMeshRef.current.skeleton.bones;
 
-        let targetRotation = 0;
-
-        if (opened) {
-            targetRotation = Math.PI;
-        } else {
-            targetRotation = 0;
+        let targetRotation = opened ? -Math.PI / 2 : Math.PI / 2;
+        if (!bookClosed) {
+            targetRotation += degToRad(number * 0.8);
         }
 
-        bones[0].rotation.y = MathUtils.lerp(
-            bones[0].rotation.y,
-            targetRotation,
-            lerpFactor
-        );
+        for (let i = 0; i < bones.length; i++) {
+            const target = i === 0 ? group.current : bones[i];
+            const insideCurveIntensity = i < 8 ? Math.sin(i * 0.2 + 0.25) : 0;
+            const outsideCurveIntensity = i >= 8 ? Math.cos(i * 0.3 + 0.09) : 0;
+            let rotationAngle =
+                insideCurveStrength * insideCurveIntensity * targetRotation -
+                outsideCurveStrength * outsideCurveIntensity * targetRotation
+            if (bookClosed) {
+                if (i === 0) {
+                    rotationAngle = targetRotation;
+                } else {
+                    rotationAngle = 0;
+                }
+            }
+            easing.dampAngle(
+                target.rotation,
+                "y",
+                rotationAngle,
+                easingFactor,
+                delta
+            );
+        }
     });
 
 
@@ -205,7 +218,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
 const Book = ({ ...props }) => {
     const [page] = useAtom(pageAtom);
     return (
-        <group {...props} rotation-y={Math.PI / 1.1}>
+        <group {...props} rotation-y={-Math.PI / 2}>
             {
                 pages.map((pageData, index) => (
                     <Page key={index} number={index} page={page} opened={page > index} bookClosed={page === 0 || page === pages.length} {...pageData} />
