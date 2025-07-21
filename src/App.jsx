@@ -23,8 +23,8 @@ function App() {
       <NavBar></NavBar>
       <Banner></Banner>
       <Skills></Skills>
-    <BookRenderer></BookRenderer>
       <Projects></Projects>
+      <BookRenderer></BookRenderer>
       <Qualification></Qualification>
       <Footer></Footer>
     </div>

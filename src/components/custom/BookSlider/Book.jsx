@@ -19,6 +19,8 @@ import { easing } from "maath";
 import { useTexture } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
 
+
+
 const easingFactor = 0.5; // Controls the speed of the easing
 const easingFactorFold = 0.3; // Controls the speed of the easing
 const insideCurveStrength = 0.18; // Controls the strength of the curve
@@ -217,8 +219,28 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
 
 const Book = ({ ...props }) => {
     const [page] = useAtom(pageAtom);
+     const [scale, setScale] = useState(() => {
+        const width = window.innerWidth;
+        if (width > 1400) return 1.5;         // Desktop, large screens
+        if (width > 1024) return 1.3;         // Laptops
+        if (width > 800) return 1.1;          // iPad Pro / tablets
+        if (width > 600) return 0.95;         // Smaller tablets
+        return 0.8;                           // Phones
+    });
+
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            if (width > 1200) setScale(1.5);
+            else if (width > 768) setScale(1.2);
+            else setScale(0.9);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     return (
-        <group {...props} rotation-y={-Math.PI / 2}>
+        <group {...props} scale={scale} rotation-y={-Math.PI / 2}>
             {
                 pages.map((pageData, index) => (
                     <Page key={index} number={index} page={page} opened={page > index} bookClosed={page === 0 || page === pages.length} {...pageData} />

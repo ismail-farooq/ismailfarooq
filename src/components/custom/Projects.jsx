@@ -58,7 +58,7 @@ function Projects() {
                 </p>
               </div>}
             </TrackVisibility>
-            <Tab.Container id="projects-tabs" defaultActiveKey="first">
+            {/* <Tab.Container id="projects-tabs" defaultActiveKey="first">
               <Nav variant="pills">
                 <Nav.Item>
                   <Nav.Link eventKey="first">Tab 1</Nav.Link>
@@ -81,7 +81,7 @@ function Projects() {
                 <Tab.Pane eventKey="second">Lorem Ipsum</Tab.Pane>
                 <Tab.Pane eventKey="third">Lorem Ipsum</Tab.Pane>
               </Tab.Content>
-            </Tab.Container>
+            </Tab.Container> */}
           </Col>
         </Row>
       </Container>
