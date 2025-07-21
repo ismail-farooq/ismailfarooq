@@ -1,8 +1,12 @@
 import { atom, useAtom } from "jotai";
 
 const pictures = [
-  
+  "/mario.jpg",
+  "/ru.jpg",
+  "/occ.jpg",
+  "/snap.jpg"
 ];
+
 
 export const pageAtom = atom(0);
 export const pages = [
