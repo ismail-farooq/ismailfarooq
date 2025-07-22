@@ -18,6 +18,7 @@ import { useAtom } from "jotai";
 import { easing } from "maath";
 import { useCursor, useTexture } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
+import { use } from "react";
 
 
 
@@ -98,21 +99,25 @@ const pageMaterials = [
 
 ];
 
-pages.forEach((page) => {
-    useTexture.preload('logo.jpg');
-    useTexture.preload('deer.png');
-    useTexture.preload('texturePattern.jpg');
-})
+[
+    "/mario.jpg",
+    "/ru.jpg",
+    "/occ.jpg",
+    "/snap.jpg",
+    "https://stanforddaily.com/wp-content/uploads/2023/05/Mario-Movie.png?resize=1200,900",
+    "/texturePattern.jpg"
+].forEach((src) => useTexture.preload(src));
+
 
 const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
 
-    const [picture, picture2, pictureRoughness] = useTexture([
-        'logo.jpg',
-        'deer.png',
-        ...(number === 0 || number === pages.length - 1
-            ? ['texturePattern.jpg']
-            : []),
-    ]);
+    const texturesToLoad = [front, back];
+    if (number === 0 || number === pages.length - 1) {
+        texturesToLoad.push('/texturePattern.jpg');
+    }
+
+    const [picture, picture2, pictureRoughness] = useTexture(texturesToLoad);
+
     picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
 
     const group = useRef();

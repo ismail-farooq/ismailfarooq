@@ -2,16 +2,17 @@ import { atom, useAtom } from "jotai";
 
 const pictures = [
   "/mario.jpg",
-  "/ru.jpg",
-  "/occ.jpg",
-  "/snap.jpg"
+  "/ru.png",
+  "/occ.png",
+  "/snap.png",
+  "https://stanforddaily.com/wp-content/uploads/2023/05/Mario-Movie.png?resize=1200,900"
 ];
 
 
 export const pageAtom = atom(0);
 export const pages = [
   {
-    front: "book-cover",
+    front: "book-cover1.png",
     back: pictures[0],
   },
 ];
@@ -24,7 +25,7 @@ for (let i = 1; i < pictures.length - 1; i += 2) {
 
 pages.push({
   front: pictures[pictures.length - 1],
-  back: "book-back",
+  back: "book-back.png",
 });
 
 export const UI = () => {
