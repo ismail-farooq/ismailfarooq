@@ -24,13 +24,13 @@ import { use } from "react";
 
 const easingFactor = 0.5; // Controls the speed of the easing
 const easingFactorFold = 0.3; // Controls the speed of the easing
-const insideCurveStrength = 0.18; // Controls the strength of the curve
+const insideCurveStrength = 0.14; // Controls the strength of the curve
 const outsideCurveStrength = 0.05; // Controls the strength of the curve
 const turningCurveStrength = 0.09; // Controls the strength of the curve
 
 const PAGE_WIDTH = 1.28;
 const PAGE_HEIGHT = 1.71; // 4:3 aspect ratio
-const PAGE_DEPTH = 0.003;
+const PAGE_DEPTH = 0.03;
 const PAGE_SEGMENTS = 30;
 const SEGMENT_WIDTH = PAGE_WIDTH / PAGE_SEGMENTS;
 
@@ -76,16 +76,16 @@ const emissiveColor = new Color("orange");
 
 const pageMaterials = [
     new MeshStandardMaterial({
-        color: whiteColor,
+        color: "#9e7c51",
     }),
     new MeshStandardMaterial({
-        color: "#111",
+        color: "#211b28",
     }),
     new MeshStandardMaterial({
-        color: whiteColor,
+        color: "#9e7c51",
     }),
     new MeshStandardMaterial({
-        color: whiteColor,
+        color: "#9e7c51",
     }),
 
     // uncomment the next few lines to add colored pages
@@ -266,7 +266,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
                 setHighlighted(false);
             }}>
             <primitive object={manualSkinnedMesh} ref={skinnedMeshRef}
-                position-z={-number * PAGE_DEPTH + page * PAGE_DEPTH}
+                position-z={-number * PAGE_DEPTH + page * PAGE_DEPTH }
             />
         </group>
     );
