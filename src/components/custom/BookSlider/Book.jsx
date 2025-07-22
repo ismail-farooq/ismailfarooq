@@ -327,7 +327,7 @@ const Book = ({ ...props }) => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
     return (
-        <group {...props} scale={scale} rotation-y={-Math.PI / 2}>
+        <group {...props} scale={scale} rotation-y={-Math.PI / 2} position={[0, 0, 0]}>
             {
                 pages.map((pageData, index) => (
                     <Page key={index} number={index} page={delayedPage} opened={delayedPage > index} bookClosed={delayedPage === 0 || delayedPage === pages.length} {...pageData} />

@@ -5,13 +5,33 @@ import { useAtom } from "jotai";
 export const Experience = () => {
   const [page] = useAtom(pageAtom);
   let displayText;
-  if (page === 0) {
-    displayText = "Cover";
-  } else if (page === pages.length) {
+
+switch (page) {
+  case 0:
+    displayText = "Hi, 3D World, Open the book to see my projects!";
+    break;
+  case 1:
+    displayText = "This is Mario! Let's-a go!";
+    break;
+  case 2:
+    displayText = "Welcome to RU!";
+    break;
+  case 3:
+    displayText = "Ocean County College — home sweet home.";
+    break;
+  case 4:
+    displayText = "Snap Inc: AR Adventures Await!";
+    break;
+  case 5:
+    displayText = "Mario Movie Poster - Powered by Stanford!";
+    break;
+  case 6:
     displayText = "Back Cover";
-  } else {
+    break;
+  default:
     displayText = `Page ${page}`;
-  }
+}
+
   return (
     <>
       <Float
@@ -38,6 +58,7 @@ export const Experience = () => {
       </mesh>
       <Text
         position={[0, -1.8, 0]}
+        rotation={[-Math.PI / 2.1, 0.15, 0.1]}
         fontSize={0.2}
         color="white"
         anchorX="center"
