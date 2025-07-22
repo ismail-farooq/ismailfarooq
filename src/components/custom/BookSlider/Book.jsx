@@ -16,7 +16,7 @@ import {
 import { useFrame } from "@react-three/fiber";
 import { useAtom } from "jotai";
 import { easing } from "maath";
-import { useTexture } from "@react-three/drei";
+import { useCursor, useTexture } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
 
 
@@ -117,6 +117,8 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
 
     const group = useRef();
     const skinnedMeshRef = useRef();
+    const turnedAt = useRef(0);
+    const lastOpened = useRef(opened);
 
     const manualSkinnedMesh = useMemo(() => {
         const bones = [];
@@ -174,6 +176,21 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
     useFrame((_, delta) => {
         if (!skinnedMeshRef.current) return;
 
+        const emissiveIntensity = highlighted ? 0.22 : 0;
+        skinnedMeshRef.current.material[4].emissiveIntensity =
+            skinnedMeshRef.current.material[5].emissiveIntensity = MathUtils.lerp(
+                skinnedMeshRef.current.material[4].emissiveIntensity,
+                emissiveIntensity,
+                0.1
+            );
+
+        if (lastOpened.current !== opened) {
+            turnedAt.current = +new Date();
+            lastOpened.current = opened;
+        }
+        let turningTime = Math.min(400, new Date() - turnedAt.current) / 400;
+        turningTime = Math.sin(turningTime * Math.PI); // ease in
+
         const bones = skinnedMeshRef.current.skeleton.bones;
 
         let targetRotation = opened ? -Math.PI / 2 : Math.PI / 2;
@@ -185,14 +202,19 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
             const target = i === 0 ? group.current : bones[i];
             const insideCurveIntensity = i < 8 ? Math.sin(i * 0.2 + 0.25) : 0;
             const outsideCurveIntensity = i >= 8 ? Math.cos(i * 0.3 + 0.09) : 0;
+            const turningIntensity = Math.sin(i * Math.PI * (1 / bones.length)) * turningTime;
             let rotationAngle =
                 insideCurveStrength * insideCurveIntensity * targetRotation -
-                outsideCurveStrength * outsideCurveIntensity * targetRotation
+                outsideCurveStrength * outsideCurveIntensity * targetRotation +
+                turningCurveStrength * turningIntensity * targetRotation;
+            let foldRotationAngle = degToRad(Math.sign(targetRotation) * 2);
             if (bookClosed) {
                 if (i === 0) {
                     rotationAngle = targetRotation;
+                    foldRotationAngle = 0;
                 } else {
                     rotationAngle = 0;
+                    foldRotationAngle = 0;
                 }
             }
             easing.dampAngle(
@@ -202,13 +224,42 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
                 easingFactor,
                 delta
             );
+
+            const foldIntensity =
+                i > 8
+                    ? Math.sin(i * Math.PI * (1 / bones.length) - 0.5) * turningTime
+                    : 0;
+            easing.dampAngle(
+                target.rotation,
+                "x",
+                foldRotationAngle * foldIntensity,
+                easingFactorFold,
+                delta
+            );
+
         }
     });
 
+    const [_, setPage] = useAtom(pageAtom);
+    const [highlighted, setHighlighted] = useState(false);
+    useCursor(highlighted);
 
 
     return (
-        <group {...props} ref={group}>
+        <group {...props} ref={group}
+            onPointerEnter={(e) => {
+                e.stopPropagation();
+                setHighlighted(true);
+            }}
+            onPointerLeave={(e) => {
+                e.stopPropagation();
+                setHighlighted(false);
+            }}
+            onClick={(e) => {
+                e.stopPropagation();
+                setPage(opened ? number : number + 1);
+                setHighlighted(false);
+            }}>
             <primitive object={manualSkinnedMesh} ref={skinnedMeshRef}
                 position-z={-number * PAGE_DEPTH + page * PAGE_DEPTH}
             />
@@ -219,7 +270,38 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
 
 const Book = ({ ...props }) => {
     const [page] = useAtom(pageAtom);
-     const [scale, setScale] = useState(() => {
+    const [delayedPage, setDelayedPage] = useState(page);
+
+    useEffect(() => {
+        let timeout;
+        const goToPage = () => {
+            setDelayedPage((delayedPage) => {
+                if (page === delayedPage) {
+                    return delayedPage;
+                } else {
+                    timeout = setTimeout(
+                        () => {
+                            goToPage();
+                        },
+                        Math.abs(page - delayedPage) > 2 ? 50 : 150
+                    );
+                    if (page > delayedPage) {
+                        return delayedPage + 1;
+                    }
+                    if (page < delayedPage) {
+                        return delayedPage - 1;
+                    }
+                }
+            });
+        };
+        goToPage();
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [page]);
+
+
+    const [scale, setScale] = useState(() => {
         const width = window.innerWidth;
         if (width > 1400) return 1.5;         // Desktop, large screens
         if (width > 1024) return 1.3;         // Laptops
@@ -243,7 +325,7 @@ const Book = ({ ...props }) => {
         <group {...props} scale={scale} rotation-y={-Math.PI / 2}>
             {
                 pages.map((pageData, index) => (
-                    <Page key={index} number={index} page={page} opened={page > index} bookClosed={page === 0 || page === pages.length} {...pageData} />
+                    <Page key={index} number={index} page={delayedPage} opened={delayedPage > index} bookClosed={delayedPage === 0 || delayedPage === pages.length} {...pageData} />
                 ))
             }
         </group>

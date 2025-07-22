@@ -453,7 +453,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 
-
+.book {
+    background: #232323;
+background: linear-gradient(321deg, rgba(35, 35, 35, 1) 0%, rgba(56, 22, 46, 1) 50%, rgba(0, 0, 0, 1) 100%);
+}
 
 
 .project {
